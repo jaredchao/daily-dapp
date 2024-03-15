@@ -1,0 +1,47 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract CheckInRewards is Ownable {
+    IERC20 public rewardToken;
+
+    // 用户的打卡记录
+    mapping(address => uint256) public lastCheckInTimestamp;
+    mapping(address => uint256) public userRewards;
+
+    uint256 public dailyReward = 1e18; // 奖励数量，例如1代币
+
+    event CheckedIn(address indexed user, uint256 timestamp, uint256 reward);
+    event DailyRewardChanged(uint256 newDailyReward);
+
+    constructor(address _rewardTokenAddress) {
+        require(_rewardTokenAddress != address(0), "Invalid token address");
+        rewardToken = IERC20(_rewardTokenAddress);
+    }
+
+    // 用户打卡
+    function checkIn() external {
+        require(block.timestamp > lastCheckInTimestamp[msg.sender] + 1 days, "Can only check in once per day");
+
+        lastCheckInTimestamp[msg.sender] = block.timestamp;
+        userRewards[msg.sender] += dailyReward;
+
+        // 调用ERC20合约的transfer函数来转移奖励代币
+        require(rewardToken.transfer(msg.sender, dailyReward), "Failed to transfer rewards");
+
+        emit CheckedIn(msg.sender, block.timestamp, dailyReward);
+    }
+
+    // 修改每日奖励数量
+    function setDailyReward(uint256 _newDailyReward) external onlyOwner {
+        dailyReward = _newDailyReward;
+        emit DailyRewardChanged(_newDailyReward);
+    }
+
+    // 允许用户查询他们的奖励余额
+    function checkRewardBalance(address _user) external view returns (uint256) {
+        return userRewards[_user];
+    }
+}

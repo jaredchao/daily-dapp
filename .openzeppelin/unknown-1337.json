@@ -1,0 +1,261 @@
+{
+  "manifestVersion": "3.2",
+  "admin": {
+    "address": "0xa269498A36f1483f5717dc80688632b501d2d1A5",
+    "txHash": "0x6b8c2529e6854d3b950955d6fdec3a3e5b877049d02ffe1d520fd30700ce8261"
+  },
+  "proxies": [
+    {
+      "address": "0xdE7ef3781AC23107f3952d91f6F4Caf47F7A89da",
+      "txHash": "0xb68eac08d8b03ec5d09ce82eeca498ebeb4bc79239847d3f585cf5a5e0b583de",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xF19C4B2d03774fb2e92eBB1Bb19BD4D121B3EBFB",
+      "txHash": "0x48db9c2da5f05383a382a486fb1e20e4b115e2d4edd435f6ee3fea0eb57c9c07",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xEE021F4c3f7D0F91F9F350FAb533bfef02b84883",
+      "txHash": "0x3a7be328d264ef7ee2eaf8d95cb8ecee76f6bad6cbe6d48e1cf53bd614202772",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x417Bd67006523387af492FE7251c0133e98026f4",
+      "txHash": "0xee86334cedffc4d0d1edc0fa2de2e073f3f47463ca8c70a199276fa6f2b980d9",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "ec439bdbdd7ab9866a3631c1e8b4135215dca2666b43446afa2a7be6693b3e4f": {
+      "address": "0x50B165Dc33F3022761eb0CA81bE5C5b6DAe7C45e",
+      "txHash": "0x93db6264c0655b05ffbde9f6fd391535df66cd0806738fa6d6432acad27379a6",
+      "layout": {
+        "solcVersion": "0.8.21",
+        "storage": [
+          {
+            "contract": "UserManagement",
+            "label": "users",
+            "type": "t_mapping(t_address,t_struct(User)507_storage)",
+            "src": "../project:/contracts/UserManagement.sol:14"
+          }
+        ],
+        "types": {
+          "t_mapping(t_address,t_struct(User)507_storage)": {
+            "label": "mapping(address => struct UserManagement.User)"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_struct(User)507_storage": {
+            "label": "struct UserManagement.User",
+            "members": [
+              {
+                "label": "registered",
+                "type": "t_bool"
+              },
+              {
+                "label": "nickname",
+                "type": "t_string_storage"
+              }
+            ]
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_uint64": {
+            "label": "uint64"
+          }
+        },
+        "namespaces": {
+          "erc7201:openzeppelin.storage.Ownable": [
+            {
+              "contract": "OwnableUpgradeable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:24"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Initializable": [
+            {
+              "contract": "Initializable",
+              "label": "_initialized",
+              "type": "t_uint64",
+              "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69"
+            },
+            {
+              "contract": "Initializable",
+              "label": "_initializing",
+              "type": "t_bool",
+              "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73"
+            }
+          ]
+        }
+      }
+    },
+    "2bb1e8efea41cec7e09865aa924d7cf01f52d55c47f769db1e9ddb9b60518bcd": {
+      "address": "0x2ae3A9f74954Ef44F7bb97eAC1bA9286071573BC",
+      "txHash": "0xad3e90e3ccca34f7c4c7f4e67f341b472880571122516031335d725f4ff4cf1f",
+      "layout": {
+        "solcVersion": "0.8.21",
+        "storage": [
+          {
+            "contract": "PunchCard",
+            "label": "dkbToken",
+            "type": "t_contract(ERC20Upgradeable)1065",
+            "src": "../project:/contracts/PunchCard.sol:11"
+          },
+          {
+            "contract": "PunchCard",
+            "label": "userPunchRecords",
+            "type": "t_mapping(t_address,t_array(t_struct(PunchRecord)1956_storage)dyn_storage)",
+            "src": "../project:/contracts/PunchCard.sol:25"
+          }
+        ],
+        "types": {
+          "t_contract(ERC20Upgradeable)1065": {
+            "label": "contract ERC20Upgradeable"
+          },
+          "t_mapping(t_address,t_array(t_struct(PunchRecord)1956_storage)dyn_storage)": {
+            "label": "mapping(address => struct PunchCard.PunchRecord[])"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_struct(PunchRecord)1956_storage)dyn_storage": {
+            "label": "struct PunchCard.PunchRecord[]"
+          },
+          "t_struct(PunchRecord)1956_storage": {
+            "label": "struct PunchCard.PunchRecord",
+            "members": [
+              {
+                "label": "timestamp",
+                "type": "t_uint256"
+              },
+              {
+                "label": "ipfsCid",
+                "type": "t_string_storage"
+              }
+            ]
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_uint64": {
+            "label": "uint64"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        },
+        "namespaces": {
+          "erc7201:openzeppelin.storage.Ownable": [
+            {
+              "contract": "OwnableUpgradeable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:24"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Initializable": [
+            {
+              "contract": "Initializable",
+              "label": "_initialized",
+              "type": "t_uint64",
+              "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69"
+            },
+            {
+              "contract": "Initializable",
+              "label": "_initializing",
+              "type": "t_bool",
+              "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73"
+            }
+          ]
+        }
+      }
+    },
+    "b2d0f912585adec9f8d0a11ead61c996f9785508ae11ed2ced0bdefc64972d1b": {
+      "address": "0x3e0eCCaCB5480DFdf3dEB3c397485A4EE9Ad8E55",
+      "txHash": "0x5568c76721aea175cf58d67718141e616b7b5420d9b30183e5e1e90918326afe",
+      "layout": {
+        "solcVersion": "0.8.21",
+        "storage": [
+          {
+            "contract": "PunchCard",
+            "label": "dkbToken",
+            "type": "t_contract(ERC20Upgradeable)1065",
+            "src": "../@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol:13"
+          },
+          {
+            "contract": "PunchCard",
+            "label": "userPunchRecords",
+            "type": "t_mapping(t_address,t_array(t_struct(PunchRecord)1385_storage)dyn_storage)",
+            "src": "../@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol:23"
+          }
+        ],
+        "types": {
+          "t_contract(ERC20Upgradeable)1065": {
+            "label": "contract ERC20Upgradeable"
+          },
+          "t_mapping(t_address,t_array(t_struct(PunchRecord)1385_storage)dyn_storage)": {
+            "label": "mapping(address => struct PunchCard.PunchRecord[])"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_struct(PunchRecord)1385_storage)dyn_storage": {
+            "label": "struct PunchCard.PunchRecord[]"
+          },
+          "t_struct(PunchRecord)1385_storage": {
+            "label": "struct PunchCard.PunchRecord",
+            "members": [
+              {
+                "label": "timestamp",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_uint64": {
+            "label": "uint64"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        },
+        "namespaces": {
+          "erc7201:openzeppelin.storage.Ownable": [
+            {
+              "contract": "OwnableUpgradeable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:24"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Initializable": [
+            {
+              "contract": "Initializable",
+              "label": "_initialized",
+              "type": "t_uint64",
+              "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69"
+            },
+            {
+              "contract": "Initializable",
+              "label": "_initializing",
+              "type": "t_bool",
+              "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
