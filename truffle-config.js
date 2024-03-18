@@ -42,9 +42,11 @@
  */
 
 require('dotenv').config();
-const { PRIVATE_KEY, PROJECT_ID } = process.env;
+const { PRIVATE_KEY, INFURA_KEY } = process.env;
 
 const HDWalletProvider = require('@truffle/hdwallet-provider');
+
+const ptoviderUrl = `https://sepolia.infura.io/v3/${INFURA_KEY}`
 
 module.exports = {
   /**
@@ -82,12 +84,10 @@ module.exports = {
     //
     // Useful for deploying to a public network.
     // Note: It's important to wrap the provider as a function to ensure truffle uses a new provider every time.
-    goerli: {
-      provider: () => new HDWalletProvider(PRIVATE_KEY, `https://goerli.infura.io/v3/c141ecde53b248289fd54f093a67d8f0`),
-      network_id: 5, // Goerli的网络ID
-      gas: 5500000, // Gas限制
+    sepolia: {
+      provider: () => new HDWalletProvider(PRIVATE_KEY, ptoviderUrl),
+      network_id: 11155111, 
       confirmations: 2,
-      timeoutBlocks: 200,
       skipDryRun: true    // Skip dry run before migrations? (default: false for public nets )
     },
     //

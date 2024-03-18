@@ -1,17 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract PunchCard is Initializable, OwnableUpgradeable {
-
-    ERC20Upgradeable private dkbToken;
-
-    function initialize() public initializer {
-      __Ownable_init(msg.sender);
-      dkbToken = ERC20Upgradeable(msg.sender);
+contract PunchCard {
+    IERC20 private dkbToken;
+    constructor() {
+        dkbToken = IERC20(0xbA17Af3EB87c36b0f86aF0da7A78C5E1Dd567297);
     }
 
     struct PunchRecord {

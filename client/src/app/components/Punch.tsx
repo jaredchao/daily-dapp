@@ -1,27 +1,36 @@
 'use client'
-import { useWriteContract } from 'wagmi'
+import { useWriteContract, useAccount } from 'wagmi'
+import { useUser } from '@/hooks/useUser'
+
 import abi from '../../../../build/contracts/PunchCard.json'
 
 export default function Punch(){
 
+  const { withAutoLogin } = useUser();
+
   const { writeContract } = useWriteContract();
 
-  async function handlePunch(){
-    console.log('test')
-    const a = await writeContract({
+  const handlePunch = withAutoLogin(() => {
+    punch()
+  })
+
+  async function punch(){
+    await writeContract({
       abi: abi.abi,
-      address: '0x3e0eCCaCB5480DFdf3dEB3c397485A4EE9Ad8E55',
+      address: '0xEDCEfDD6555cEAFC7566E4a24b5091413AfBa55b',
       functionName: 'punch',
     },{
-      onError: (...error) => {
-        console.log('error', error)
+      onError: (error) => {
+        alert(error.cause.reason ?? error.message)
+      },
+      onSuccess: () => {
+        alert('success')
       }
     })
-
-    console.log(a);
   }
 
-  return <div>
+
+  return <div className="gap-x-2">
     <button onClick={handlePunch} className="hover:bg-white/80 px-10 h-10 bg-white rounded-lg text-center text-black mx-auto mt-20 block">Click</button>
   </div>
 }
