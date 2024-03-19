@@ -2,7 +2,7 @@
 import { useWriteContract, useAccount } from 'wagmi'
 import { useUser } from '@/hooks/useUser'
 
-import abi from '../../../../build/contracts/PunchCard.json'
+import abi from '@/abi/PunchCard.json'
 
 export default function Punch(){
 
@@ -19,9 +19,9 @@ export default function Punch(){
       abi: abi.abi,
       address: '0xEDCEfDD6555cEAFC7566E4a24b5091413AfBa55b',
       functionName: 'punch',
-    },{
+    }, {
       onError: (error) => {
-        alert(error.cause.reason ?? error.message)
+        alert((error.cause as any).reason ?? error.message)
       },
       onSuccess: () => {
         alert('success')
