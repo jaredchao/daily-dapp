@@ -16,7 +16,7 @@ export function useUser() {
 
   // 登录逻辑
   const login = async () => {
-     openConnectModal()
+     openConnectModal?.()
   };
 
 
